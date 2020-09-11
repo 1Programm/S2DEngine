@@ -14,6 +14,7 @@ public class Window extends JFrame {
        this.add(canvas);
        this.pack();
        this.setVisible(true);
+       Core.canvas = canvas;
     }
 
 }
