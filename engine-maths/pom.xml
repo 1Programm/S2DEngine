@@ -5,7 +5,7 @@
     <parent>
         <artifactId>S2DEngine</artifactId>
         <groupId>com.progen.engine</groupId>
-        <version>1.0</version>
+        <version>0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
