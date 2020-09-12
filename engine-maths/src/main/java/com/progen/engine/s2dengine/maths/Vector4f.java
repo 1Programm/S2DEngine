@@ -6,7 +6,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Vector4f {
 
     public static float LengthSqrt(Vector4f v){
@@ -167,5 +166,9 @@ public class Vector4f {
     public Vector4f div(Vector4f v){
         return div(v.x, v.y, v.z, v.w);
     }
-    
+
+    @Override
+    public String toString() {
+        return "Vec4f[" + x + ", " + y + ", " + z + ", " + w + "]";
+    }
 }

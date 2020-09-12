@@ -1,9 +1,7 @@
 package com.progen.engine.s2dengine.maths;
 
 import lombok.Getter;
-import lombok.ToString;
 
-@ToString
 @Getter
 public class Vectorf {
 
@@ -216,4 +214,21 @@ public class Vectorf {
         return div(other.data);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vec").append(data.length).append("f[");
+
+        for(int i=0;i<data.length;i++){
+            if(i > 0){
+                sb.append(", ");
+            }
+
+            sb.append(data[i]);
+        }
+
+        sb.append("]");
+
+        return sb.toString();
+    }
 }

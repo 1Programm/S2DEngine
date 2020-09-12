@@ -239,5 +239,23 @@ public class Matrixf {
         return mul(m.data);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        String newLine = "\n";
+        sb.append("Mat").append(width).append("x").append(height);
 
+        for(int y=0;y<height;y++){
+            sb.append(newLine).append("[");
+            for(int x=0;x<width;x++){
+                if(x > 0){
+                    sb.append(", ");
+                }
+                sb.append(data[y][x]);
+            }
+            sb.append("]");
+        }
+
+        return sb.toString();
+    }
 }
