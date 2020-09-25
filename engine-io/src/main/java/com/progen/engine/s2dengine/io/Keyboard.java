@@ -1,4 +1,5 @@
-import java.awt.*;
+package com.progen.engine.s2dengine.io;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;

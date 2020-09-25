@@ -14,8 +14,8 @@ public class Main {
         Engine engine = new Engine();
         Scene startScene = new Scene();
         startScene.addGameObject(player);
-        engine.registerScene("startScene", startScene);
-        engine.loadScene("startScene");
-        engine.start();
+//        engine.registerScene("startScene", startScene);
+//        engine.loadScene("startScene");
+//        engine.start();
     }
 }
