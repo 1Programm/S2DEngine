@@ -10,10 +10,9 @@ public class Engine {
 
     boolean showFps = false;
 
-    public void init() {
-        run();
+    public Engine() {
+        Window window = new Window(Core.WINDOW_WIDTH, Core.WINDOW_HEIGHT, Core.WINDOW_NAME, true);
     }
-
 
 
     private void update (double delta){
@@ -76,5 +75,7 @@ public class Engine {
         Graphics g = bs.getDrawGraphics();
         render(g);
     }
+
+
 
 }

@@ -1,14 +1,21 @@
 package com.progen.engine.s2dengine.core;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Main {
 
     public static void main(String[] args) {
+        log.info("Started Main Method");
         Main main = new Main();
     }
-
+    private Player player;
     Main() {
-        Window window = new Window(Core.WINDOW_WIDTH, Core.WINDOW_HEIGHT, Core.WINDOW_NAME, true);
         Engine engine = new Engine();
-        engine.init();
+        Scene startScene = new Scene();
+        startScene.addGameObject(player);
+        engine.registerScene("startScene", startScene);
+        engine.loadScene("startScene");
+        engine.start();
     }
 }
