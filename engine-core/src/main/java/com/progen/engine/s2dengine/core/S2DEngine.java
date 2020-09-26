@@ -51,46 +51,45 @@ public class S2DEngine implements ISceneHandler{
     }
 
     private void run() {
-
-        double lastTime = System.nanoTime();
-        double amountOfTicks = 1 / fps;
+        long lastTime = System.nanoTime();
+        double amountOfTicks = 60;
+        double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        double timer = System.currentTimeMillis();
-
-
+        long timer = System.currentTimeMillis();
         int updates = 0;
         int frames = 0;
-
-        double fpstime = 0;
-
-        while (running) {
-
-            double now = System.nanoTime();
-            delta = (now - lastTime);
-
-            fpstime += ((now - lastTime) / 1000000000.0);
+        while(running){
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
             lastTime = now;
 
-            update(1/delta);
-            if (showFps) updates++;
+            boolean rendered = false;
 
-            if (fpstime >= amountOfTicks) {
+            while(delta >= 1){
+                update(delta);
+                if(showFps) updates++;
+                delta--;
+                rendered = true;
+            }
 
+            if(rendered){
                 preRender();
-                frames++;
-                fpstime = 0;
             }
 
 
-            if (showFps) {
-                if (System.currentTimeMillis() - timer > 1000) {
+            if(showFps) {
+                frames++;
+
+                if(System.currentTimeMillis() - timer > 1000){
                     timer += 1000;
-                    System.out.println("FPS: " + frames + " - TICKS: " + updates);
+                    log.trace("FPS: {} - TICKS: {}", frames, updates);
+                    fps = updates;
                     frames = 0;
                     updates = 0;
                 }
             }
         }
+
     }
 
     private void preRender() {
