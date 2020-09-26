@@ -11,7 +11,7 @@ public class Main {
     }
     private Player player;
     Main() {
-        Engine engine = new Engine();
+        S2DEngine engine = new S2DEngine("Test", 600, 500);
         Scene startScene = new Scene();
         startScene.addGameObject(player);
 //        engine.registerScene("startScene", startScene);
