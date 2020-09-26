@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class PingPongBall extends GameObject {
 
-    Vector2f vel = new Vector2f(1f,1f);
+    Vector2f vel = new Vector2f(100f,100f);
 
     public PingPongBall(float x, float y) {
         this.x = x;

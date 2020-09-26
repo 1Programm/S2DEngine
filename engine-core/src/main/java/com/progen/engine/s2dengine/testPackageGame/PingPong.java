@@ -14,6 +14,5 @@ public class PingPong {
         engine.registerScene("StartScene", scene);
         engine.loadScene("StartScene");
         engine.start();
-
     }
 }

@@ -20,7 +20,9 @@ public class S2DEngine implements ISceneHandler{
 
     private boolean showFps = true;
     private boolean running = false;
-    private float fps= 60;
+
+    private int fps = 60;
+    private float ticks = 300;
 
     public S2DEngine(String name, int width, int height) {
         window = new S2DWindow(width, height, name, true);
@@ -51,39 +53,47 @@ public class S2DEngine implements ISceneHandler{
     }
 
     private void run() {
+
+        double ns = 1000000000 ;
+
         long lastTime = System.nanoTime();
-        double amountOfTicks = 60;
-        double ns = 1000000000 / amountOfTicks;
+        double lastTimeFps = 0;
+
         double delta = 0;
-        long timer = System.currentTimeMillis();
+
         int updates = 0;
         int frames = 0;
+        long timer = System.currentTimeMillis();
+        boolean rendered = false;
+
         while(running){
+
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
+            lastTimeFps += (now - lastTime) / ns;
+
             lastTime = now;
 
-            boolean rendered = false;
-
-            while(delta >= 1){
+            while(delta >= 1.0/ticks){
                 update(delta);
                 if(showFps) updates++;
-                delta--;
+                delta -= 1.0/ticks;
                 rendered = true;
             }
 
-            if(rendered){
+            if(rendered && lastTimeFps >= 1.0/fps){
                 preRender();
+                if(showFps)frames++;
+                lastTimeFps = 0;
+                rendered = false;
             }
 
 
             if(showFps) {
-                frames++;
-
                 if(System.currentTimeMillis() - timer > 1000){
+
                     timer += 1000;
                     log.trace("FPS: {} - TICKS: {}", frames, updates);
-                    fps = updates;
                     frames = 0;
                     updates = 0;
                 }
@@ -120,4 +130,10 @@ public class S2DEngine implements ISceneHandler{
     }
 
 
+    public void setFps(int fps) {
+        this.fps = fps;
+    }
+    public void setTicks(float ticks) {
+        this.ticks = ticks;
+    }
 }
