@@ -16,6 +16,8 @@ public class S2DWindow extends JFrame {
        this.add(canvas);
        this.pack();
        this.setVisible(true);
+       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.setLocationRelativeTo(null);
 
     }
 

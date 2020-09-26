@@ -1,5 +1,6 @@
 package com.progen.engine.s2dengine.core;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +8,15 @@ public class GameObjectHandler {
     List<GameObject> objList = new ArrayList();
 
 
-    public void update () {
-        for(GameObject obj : objList) {
-            obj.update();
+    public void update (GameContext gameContext) {
+        for(int i=0;i<objList.size();i++) {
+            objList.get(i).update(gameContext);
         }
     }
 
-    public void render () {
-        for(GameObject obj : objList) {
-            obj.render();
+    public void render (Graphics g) {
+        for(int i=0;i<objList.size();i++) {
+            objList.get(i).render(g);
         }
     }
 
@@ -26,5 +27,13 @@ public class GameObjectHandler {
 
     public void removeObject (Object obj) {
         objList.remove(obj);
+    }
+
+    public void clear () {
+        objList.clear();
+    }
+
+    public void load (List<GameObject> objList) {
+        this.objList.addAll(objList);
     }
 }

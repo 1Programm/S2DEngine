@@ -53,11 +53,17 @@ public class StandardMouseInput extends MouseAdapter implements IMouseInput {
     }
 
     @Override
+    public void mouseDragged(MouseEvent e) {
+        this.mouseX = e.getX();
+        this.mouseY = e.getY();
+    }
+
+    @Override
     public void mousePressed(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON1){
             left = true;
         }
-        else if(e.getButton() == MouseEvent.BUTTON2){
+        else if(e.getButton() == MouseEvent.BUTTON3){
             right = true;
         }
 

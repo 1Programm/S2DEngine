@@ -1,7 +1,5 @@
 package com.progen.engine.s2dengine.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 public class Scene {
@@ -10,5 +8,9 @@ public class Scene {
 
     public void addGameObject(GameObject obj) {
         gameObjects.add(obj);
+    }
+
+    public List<GameObject> getGameObjects() {
+        return gameObjects;
     }
 }

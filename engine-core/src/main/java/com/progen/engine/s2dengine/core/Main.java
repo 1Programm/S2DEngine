@@ -9,13 +9,14 @@ public class Main {
         log.info("Started Main Method");
         Main main = new Main();
     }
-    private Player player;
+    private Player player = new Player();
     Main() {
         S2DEngine engine = new S2DEngine("Test", 600, 500);
         Scene startScene = new Scene();
         startScene.addGameObject(player);
-//        engine.registerScene("startScene", startScene);
-//        engine.loadScene("startScene");
-//        engine.start();
+        engine.registerScene("TEST", new Scene());
+        engine.registerScene("startScene", startScene);
+        engine.loadScene("startScene");
+        engine.start();
     }
 }
