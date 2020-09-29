@@ -44,4 +44,5 @@ public class StandardKeyInput extends KeyAdapter implements IKeyInput{
             keyListener.onEvent(e.getKeyCode());
         }
     }
+
 }

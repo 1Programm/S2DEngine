@@ -20,6 +20,12 @@ public class GameObjectHandler {
         }
     }
 
+    public void init(GameContext gameContext) {
+        for(int i=0;i<objList.size();i++) {
+            objList.get(i).init(gameContext);
+        }
+    }
+
 
     public void addObject (GameObject obj) {
         objList.add(obj);

@@ -2,6 +2,7 @@ package com.progen.engine.s2dengine.core;
 
 import com.progen.engine.s2dengine.io.keyboard.StandardKeyInput;
 import com.progen.engine.s2dengine.io.mouse.StandardMouseInput;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
@@ -15,6 +16,7 @@ public class S2DEngine implements ISceneHandler{
     private final S2DWindow window;
 
     private final GameObjectHandler gObjHandler;
+    @Getter
     private final GameContext gContext;
     private final Map<String, Scene> sceneMap = new HashMap<>();
 
@@ -49,6 +51,7 @@ public class S2DEngine implements ISceneHandler{
     public void start() {
         if(running)  return;
         running = true;
+        gObjHandler.init(gContext);
         run();
     }
 
