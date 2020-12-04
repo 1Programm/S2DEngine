@@ -22,5 +22,4 @@ public class GameContext {
         this.sceneHandler = sceneHandler;
     }
 
-
 }

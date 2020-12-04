@@ -31,7 +31,7 @@ public class StandardKeyInput extends KeyAdapter implements IKeyInput{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keys.add(e.getKeyCode());
+        if(!keys.contains(e.getKeyCode())) keys.add(e.getKeyCode());
         for(IKeyEventListener keyListener : keyPressedListeners) {
             keyListener.onEvent(e.getKeyCode());
         }
@@ -39,7 +39,7 @@ public class StandardKeyInput extends KeyAdapter implements IKeyInput{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys.remove((Object) e.getKeyCode());
+        if(keys.contains(e.getKeyCode())) keys.remove((Object) e.getKeyCode());
         for(IKeyEventListener keyListener : keyReleasedListeners) {
             keyListener.onEvent(e.getKeyCode());
         }

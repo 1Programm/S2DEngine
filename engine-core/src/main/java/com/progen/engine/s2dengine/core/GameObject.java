@@ -18,7 +18,9 @@ public  class GameObject {
 
     }
 
+    protected void collide (GameObject obj) {
 
+    }
 
 
     public GameObject addMouseListener (GameContext gameContext) {
@@ -31,3 +33,5 @@ public  class GameObject {
         return this;
     }
 }
+
+

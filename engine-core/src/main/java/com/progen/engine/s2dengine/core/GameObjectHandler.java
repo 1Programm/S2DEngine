@@ -8,6 +8,7 @@ public class GameObjectHandler {
     List<GameObject> objList = new ArrayList();
 
 
+
     public void update (GameContext gameContext) {
         for(int i=0;i<objList.size();i++) {
             objList.get(i).update(gameContext);
