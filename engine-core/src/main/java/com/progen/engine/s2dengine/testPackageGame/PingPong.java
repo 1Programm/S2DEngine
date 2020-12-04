@@ -1,5 +1,7 @@
 package com.progen.engine.s2dengine.testPackageGame;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.progen.engine.s2dengine.core.S2DEngine;
 import com.progen.engine.s2dengine.core.Scene;
 
@@ -12,12 +14,30 @@ public class PingPong {
         engine.setFps(60);
         Scene scene = new Scene();
 
-        scene.addGameObject(new PingPongBall(500, 800));
+        PingPongBall ball = new PingPongBall(500, 800);
+        scene.addGameObject(ball);
 
         scene.addGameObject(new WeirdThingyYouPushTheBallWith(450, 900));
 
         engine.registerScene("StartScene", scene);
         engine.loadScene("StartScene");
+
+
+
+        //----------------------------------------
+        ObjectMapper m = new ObjectMapper();
+        String _ball = null;
+        try {
+            _ball = m.writeValueAsString(ball);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        System.out.println(_ball);
+        //----------------------------------------
+
         engine.start();
+
+
+
     }
 }

@@ -34,6 +34,30 @@ public class PingPongBall extends GameObject {
         y += vel.getY() * gameContext.getDelta();
         middlePoint.set(x + size.getX() / 2, y + size.getY() / 2);
     }
+
+    public Vector2f getVel() {
+        return vel;
+    }
+
+    public Vector2f getSize() {
+        return size;
+    }
+
+    public Vector2f getMiddlePoint() {
+        return middlePoint;
+    }
+
+    public void setVel(Vector2f vel) {
+        this.vel = vel;
+    }
+
+    public void setSize(Vector2f size) {
+        this.size = size;
+    }
+
+    public void setMiddlePoint(Vector2f middlePoint) {
+        this.middlePoint = middlePoint;
+    }
 }
 
 
